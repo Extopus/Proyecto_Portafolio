@@ -1,0 +1,48 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+{% load static %}
+<div class="container mt-5">
+   <h2 class="text-center mb-4">Contactos Recibidos</h2>
+   <div class="table-responsive">
+    <table class="table table-hover aling-middle">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">nombre</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mensaje</th>
+                <th scope="col" class="text-center">Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for contacto in contactos %}
+            <tr>
+                <td>{{contacto.nombre}}</td>
+                <td>{{contacto.email}}</td>
+                <td>{{contacto.mensaje}}</td>
+                <td class="text-center">
+                    <a href="{% url 'contacto_detalle' contacto.pk %}" class="btn btn-info btn-sm m-1">Ver</a>
+                    <a href="{% url 'contacto_editar' contacto.pk %}" class="btn btn-warning btn-sm m-1">editar</a>
+
+                    <form method="POST" action="{% url 'contacto_eliminar' contacto.pk %}" style="display: inline;">
+                    {%csrf_token%}
+                    <button type='submit' class="btn btn-danger btn-sm m-1">ELIMINAR</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+   </div>
+
+ 
+</div>
+
+    <div class="container-fluid text-center text-white derechos ">
+     
+  
+      <h6>© Copyright 2024 - Todos los derechos ultra mega súper recontra reservados.</h6>
+      <img class="logo" src="{% static 'images/logo.png' %}" alt="">
+
+    </div> 
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-5">
+    <h2>Iniciar sesión</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+    </form>
+</div>
+
+    <div class="container-fluid text-center text-white derechos ">
+     
+  
+      <h6>© Copyright 2024 - Todos los derechos ultra mega súper recontra reservados.</h6>
+      <img class="logo" src="{% static 'images/logo.png' %}" alt="">
+
+    </div> 
+
+{% endblock %}
